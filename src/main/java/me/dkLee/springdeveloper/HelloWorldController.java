@@ -15,27 +15,27 @@ public class HelloWorldController {
     // http://localhost:8080/test -> "Hello Everyone!!!!"
 
 
-    @GetMapping("/test")
-    public String test() {
-        return "Hello Everyone!!!!";
-    }
-
+//    @GetMapping("/test")
+//    public String test() {
+//        return "Hello Everyone!!!!";
+//    }
 
     @PostMapping ("/test")
     public String postTest() {
         return "Post Test response!!!";
     }
 
-
     @DeleteMapping ("/test")
     public String deleteTest() {
         return "Delete Test!!";
     }
 
-
     @PutMapping("/test")
     public String PutTest(){
         return "PutTest";
     }
+
+
+
 
 }
