@@ -10,14 +10,13 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/members")
-@RequiredArgsConstructor
+
 public class MemberController {
     @Autowired
     private MemberService memberService;
+    // 요청을  받아서 적절한 비즈니스 로직
 
-
-    @GetMapping
+    @GetMapping("/member")
     public List<Member> getAllMembers() {
         return memberService.getAllMembers();
     }
@@ -25,7 +24,7 @@ public class MemberController {
 
     // 회원정보를 등록하는 요청
     // hhtp://localhost:8080/member 요청을 POST 방식으로 했을 때 회원 등록을 처리하도록 구현
-    @PostMapping
+    @PostMapping("/member")
     public ResponseEntity<Member> createMember(@RequestBody Member member) {
         // 비지니스 로직 호출
         // return ResponseEntity.ok(memberService.saveMember(member));
