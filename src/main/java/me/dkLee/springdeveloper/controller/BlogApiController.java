@@ -1,14 +1,21 @@
 package me.dkLee.springdeveloper.controller;
 
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import me.dkLee.springdeveloper.dao.Article;
 import me.dkLee.springdeveloper.dto.ArticleCreationRequest;
+import me.dkLee.springdeveloper.dto.ArticleResponse;
 import me.dkLee.springdeveloper.service.BlogService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.ArrayList;
+import java.util.List;
+
 @RequiredArgsConstructor
 @RestController
 public class BlogApiController {
@@ -21,6 +28,18 @@ public class BlogApiController {
         Article savedArticle = blogService.save(articleCreationRequest);
         // 성공했다면 ResponseEntity 객체를 반환
         return ResponseEntity.status(HttpStatus.CREATED).body(savedArticle);
+    }
 
+    @GetMapping("/api/articles")
+    public ResponseEntity<List<ArticleResponse>> getAllArticles() {
+        /*
+        List<Article> articleList = blogService.findAll();
+        List<ArticleResponse> articleResponsesList = new ArrayList<>();
+        for (Article article : articleList) {
+            articleResponsesList.add(new ArticleResponse(article));
+        }
+        */
+        List<ArticleResponse> articleResponsesList = blogService.findAll().stream().map(ArticleResponse::new).toList();
+        return ResponseEntity.ok().body(articleResponsesList);
     }
 }

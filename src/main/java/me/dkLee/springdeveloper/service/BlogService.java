@@ -5,6 +5,9 @@ import me.dkLee.springdeveloper.dao.Article;
 import me.dkLee.springdeveloper.dto.ArticleCreationRequest;
 import me.dkLee.springdeveloper.repository.BlogRepository;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+
 @RequiredArgsConstructor
 @Service
 public class BlogService {
@@ -14,4 +17,8 @@ public class BlogService {
         return blogRepository.save(articleCreationRequest.toEntity());
     }
 
+    // 아티클 테이블에 있는 모든 메서드를 리턴해주는
+    public List<Article> findAll() {
+        return blogRepository.findAll();
+    }
 }
