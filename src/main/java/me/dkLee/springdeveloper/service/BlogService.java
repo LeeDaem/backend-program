@@ -23,13 +23,13 @@ public class BlogService {
     }
 
 
-    // 특정 아이디 조회
+    // 특정 블로그 글 조회
     public Article getById(Long id) throws IllegalAccessException {
         return blogRepository.findById(id)
                 .orElseThrow(() -> new IllegalAccessException("not found: " + id));
     }
 
-    // 삭제
+    // 특정 블로그 글 삭제
     public void deleteById(long id) {
         blogRepository.deleteById(id);
     }

@@ -41,7 +41,7 @@ public class BlogApiController {
         List<ArticleResponse> articleResponsesList = blogService.findAll().stream().map(ArticleResponse::new).toList();
         return ResponseEntity.ok().body(articleResponsesList);
     }
-    // 특정 블로그 글 조회
+    // 특정 블로그 글 조회.
     @GetMapping("/api/articles/{id}")
     public ResponseEntity<ArticleResponse> getById(@PathVariable Long id) throws IllegalAccessException {
         Article article = blogService.getById(id);
@@ -49,7 +49,7 @@ public class BlogApiController {
                 .body(new ArticleResponse(article));
     }
 
-    // 특정 블로그 글 삭제
+    // 특정 블로그 글 삭제.
     @DeleteMapping("/api/articles/{id}")
     public ResponseEntity<Void> deleteById(@PathVariable Long id) {
         blogService.deleteById(id);
