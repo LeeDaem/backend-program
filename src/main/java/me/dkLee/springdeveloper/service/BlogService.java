@@ -21,4 +21,16 @@ public class BlogService {
     public List<Article> findAll() {
         return blogRepository.findAll();
     }
+
+
+    // 특정 아이디 조회
+    public Article getById(Long id) throws IllegalAccessException {
+        return blogRepository.findById(id)
+                .orElseThrow(() -> new IllegalAccessException("not found: " + id));
+    }
+
+    // 삭제
+    public void deleteById(long id) {
+        blogRepository.deleteById(id);
+    }
 }
