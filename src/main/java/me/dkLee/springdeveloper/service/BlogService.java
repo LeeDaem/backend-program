@@ -1,10 +1,13 @@
 package me.dkLee.springdeveloper.service;
 
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import me.dkLee.springdeveloper.dao.Article;
 import me.dkLee.springdeveloper.dto.ArticleCreationRequest;
+import me.dkLee.springdeveloper.dto.ArticleUpdateRequest;
 import me.dkLee.springdeveloper.repository.BlogRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -33,4 +36,17 @@ public class BlogService {
     public void deleteById(long id) {
         blogRepository.deleteById(id);
     }
+
+
+    // 특정 블로그 글 수정
+    @Transactional
+    public Article updateArticle(Long id, ArticleUpdateRequest request) {
+        Article article = blogRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Article not found: " + id));
+        article.update(request.getTitle(), request.getContent());
+        return article;
+    }
+
+
+    //
 }

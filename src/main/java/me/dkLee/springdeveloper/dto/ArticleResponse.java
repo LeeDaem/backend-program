@@ -1,3 +1,4 @@
+// 답변할때 사용하는 dto
 package me.dkLee.springdeveloper.dto;
 
 import lombok.Getter;

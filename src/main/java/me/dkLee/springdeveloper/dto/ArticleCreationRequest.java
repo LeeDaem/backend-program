@@ -1,3 +1,4 @@
+// 생성할때 쓰는 dto
 package me.dkLee.springdeveloper.dto;
 
 import lombok.AllArgsConstructor;
