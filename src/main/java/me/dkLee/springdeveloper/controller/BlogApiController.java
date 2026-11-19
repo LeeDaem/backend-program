@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RequiredArgsConstructor
-@RestController
+@RestController // 응답으로 JSON을 준다
 public class BlogApiController {
 
     private final BlogService blogService;
@@ -57,6 +57,7 @@ public class BlogApiController {
         return ResponseEntity.ok().build();
     }
 
+    // 블로그 글 수정.
     @PutMapping("/api/articles/{id}")
     public ResponseEntity<ArticleResponse> updateArticle(@PathVariable Long id, @RequestBody ArticleUpdateRequest request){
         Article article = blogService.updateArticle(id, request);
